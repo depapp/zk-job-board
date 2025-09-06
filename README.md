@@ -2,9 +2,8 @@
 
 A privacy-preserving job board where applicants prove they meet job requirements without revealing their personal attributes, built using Midnight Network's Compact language and MidnightJS.
 
-## 🏆 DEV Challenge: Protect That Data
-
-This project is a submission for the [Midnight Network DEV Challenge](https://dev.to/challenges/midnight-2025-08-20).
+## Full Explanation on DEV.to Article
+- https://dev.to/depapp/privacy-first-job-applications-with-midnight-network-ing 
 
 ## 🎯 Overview
 
@@ -142,34 +141,6 @@ zk-job-board/
 - Nullifiers prevent replay attacks while maintaining privacy
 - Open-source for full transparency
 
-## 📚 Documentation
-
-- [Overview & Tutorial](docs/overview.md)
-- [Running Instructions](docs/running.md)
-- [Architecture Details](docs/architecture.md)
-- [Accessibility Guide](docs/accessibility.md)
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read our contributing guidelines and code of conduct.
-
 ## 📄 License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Midnight Network for the ZK infrastructure
-- DEV Community for hosting the challenge
-- Open-source community for the amazing tools
-
-## 🔗 Links
-
-- [Challenge Page](https://dev.to/challenges/midnight-2025-08-20)
-- [Midnight Network](https://midnight.network/)
-- [Live Demo](#) (Coming soon)
-- [Video Walkthrough](#) (Coming soon)
-
----
-
-**Note**: This project uses only mocked transactions and tokens with no real-world value, as per challenge requirements.
