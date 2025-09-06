@@ -1,0 +1,56 @@
+# Circuit Parameters Configuration
+# Defines constants and settings for the job eligibility circuit
+
+[circuit]
+name = "job_eligibility"
+version = "1.0.0"
+description = "Zero-knowledge proof circuit for job eligibility verification"
+
+[constants]
+# Maximum number of skills in the allowlist
+N_SKILLS = 32
+
+# Maximum years of experience allowed
+MAX_EXPERIENCE = 40
+
+# Number of supported regions
+N_REGIONS = 6
+
+# Field modulus (BN254 curve)
+FIELD_MODULUS = "21888242871839275222246405745257275088548364400416034343698204186575808495617"
+
+[proving]
+# Proving scheme
+scheme = "groth16"
+
+# Trusted setup parameters
+powers_of_tau = 14  # 2^14 constraints max
+
+[optimization]
+# Enable constraint optimization
+optimize = true
+
+# Witness generation optimization
+parallel_witness = true
+
+[security]
+# Security level in bits
+security_level = 128
+
+# Enable additional security checks
+strict_mode = true
+
+[regions]
+# Region code mappings
+NA = 0
+EU = 1
+APAC = 2
+LATAM = 3
+AFRICA = 4
+MENA = 5
+
+[hash]
+# Hash function configuration
+function = "poseidon"
+width = 2  # Poseidon width parameter
+rounds = 8  # Number of rounds

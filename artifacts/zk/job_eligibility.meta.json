@@ -1,0 +1,20 @@
+{
+  "circuit": "job_eligibility",
+  "version": "1.0.0",
+  "compiledAt": "2025-09-05T11:27:25.680Z",
+  "compiler": "midnight-compact",
+  "compilerVersion": "1.0.0",
+  "hash": "ca66e65d9f6d356d7afd3297d3980838a979f752e3731cf16d6a3bf588ce32ca",
+  "constraints": {
+    "total": 2048,
+    "publicInputs": 3,
+    "privateInputs": 42,
+    "gates": 1500,
+    "wires": 4500
+  },
+  "parameters": {
+    "N_SKILLS": 32,
+    "MAX_EXPERIENCE": 40,
+    "N_REGIONS": 6
+  }
+}

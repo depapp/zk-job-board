@@ -1,0 +1,42 @@
+{
+  "skills": [
+    "typescript",
+    "javascript",
+    "react",
+    "vue",
+    "angular",
+    "nodejs",
+    "python",
+    "rust",
+    "go",
+    "java",
+    "solidity",
+    "zk-proofs",
+    "cryptography",
+    "aws",
+    "gcp",
+    "azure",
+    "docker",
+    "kubernetes",
+    "postgresql",
+    "mongodb",
+    "redis",
+    "graphql",
+    "rest-api",
+    "web3",
+    "defi",
+    "smart-contracts",
+    "machine-learning",
+    "data-science",
+    "devops",
+    "ci-cd"
+  ],
+  "categories": {
+    "languages": ["typescript", "javascript", "python", "rust", "go", "java", "solidity"],
+    "frameworks": ["react", "vue", "angular", "nodejs"],
+    "blockchain": ["solidity", "web3", "defi", "smart-contracts", "zk-proofs"],
+    "cloud": ["aws", "gcp", "azure", "docker", "kubernetes"],
+    "databases": ["postgresql", "mongodb", "redis"],
+    "other": ["graphql", "rest-api", "machine-learning", "data-science", "devops", "ci-cd", "cryptography"]
+  }
+}

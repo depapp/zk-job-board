@@ -1,0 +1,144 @@
+// Job Eligibility Zero-Knowledge Circuit
+// Proves applicant meets job requirements without revealing attributes
+
+pragma compact 1.0;
+
+// Circuit parameters
+const N_SKILLS: u32 = 32;  // Maximum number of skills in allowlist
+const MAX_EXPERIENCE: u32 = 40;  // Maximum years of experience
+const N_REGIONS: u32 = 6;  // Number of regions (NA, EU, APAC, LATAM, AFRICA, MENA)
+
+// Public inputs - visible to verifier
+struct PublicInputs {
+    jobId: Field,           // Unique job identifier
+    policyHash: Field,      // Hash of job requirements
+    nullifier: Field        // Prevents double applications
+}
+
+// Private inputs - hidden from verifier
+struct PrivateInputs {
+    // Applicant attributes
+    skillsBitset: [Field; N_SKILLS],     // Bitset of applicant's skills
+    experienceYears: Field,               // Years of experience
+    regionIndex: Field,                   // Index of applicant's region
+    secret: Field,                        // Random secret for nullifier
+    
+    // Job requirements (private to ensure consistency with policyHash)
+    requiredSkillsBitset: [Field; N_SKILLS],  // Bitset of required skills
+    minExperienceYears: Field,                // Minimum years required
+    allowedRegionsBitset: [Field; N_REGIONS]  // Bitset of allowed regions
+}
+
+// Main circuit function
+circuit JobEligibility {
+    // Define inputs
+    pub public: PublicInputs;
+    priv private: PrivateInputs;
+    
+    // Constraint 1: Verify policy hash matches job requirements
+    constraint verify_policy_hash() {
+        // Compute hash of job requirements
+        let mut policy_preimage = Vec::new();
+        
+        // Add required skills to preimage
+        for i in 0..N_SKILLS {
+            policy_preimage.push(private.requiredSkillsBitset[i]);
+        }
+        
+        // Add minimum experience
+        policy_preimage.push(private.minExperienceYears);
+        
+        // Add allowed regions
+        for i in 0..N_REGIONS {
+            policy_preimage.push(private.allowedRegionsBitset[i]);
+        }
+        
+        // Hash the policy and verify it matches public input
+        let computed_hash = poseidon_hash(policy_preimage);
+        assert_eq(computed_hash, public.policyHash);
+    }
+    
+    // Constraint 2: Verify applicant has all required skills
+    constraint verify_skills() {
+        for i in 0..N_SKILLS {
+            // If skill is required (bit = 1), applicant must have it
+            if private.requiredSkillsBitset[i] == 1 {
+                assert_eq(private.skillsBitset[i], 1);
+            }
+        }
+    }
+    
+    // Constraint 3: Verify applicant meets minimum experience
+    constraint verify_experience() {
+        // Experience must be >= minimum required
+        assert_gte(private.experienceYears, private.minExperienceYears);
+        
+        // Experience must be within valid range
+        assert_lte(private.experienceYears, MAX_EXPERIENCE);
+        assert_gte(private.experienceYears, 0);
+    }
+    
+    // Constraint 4: Verify applicant is in allowed region
+    constraint verify_region() {
+        // Region index must be valid
+        assert_lt(private.regionIndex, N_REGIONS);
+        assert_gte(private.regionIndex, 0);
+        
+        // Check if applicant's region is in allowed regions
+        let region_allowed = private.allowedRegionsBitset[private.regionIndex];
+        assert_eq(region_allowed, 1);
+    }
+    
+    // Constraint 5: Verify nullifier computation
+    constraint verify_nullifier() {
+        // Nullifier = Hash(jobId || secret)
+        // This ensures same secret produces same nullifier for same job
+        // but different nullifiers for different jobs
+        let nullifier_preimage = [public.jobId, private.secret];
+        let computed_nullifier = poseidon_hash(nullifier_preimage);
+        assert_eq(computed_nullifier, public.nullifier);
+    }
+    
+    // Constraint 6: Validate bitset formats
+    constraint validate_bitsets() {
+        // All bitset values must be 0 or 1
+        for i in 0..N_SKILLS {
+            let skill_bit = private.skillsBitset[i];
+            assert(skill_bit == 0 || skill_bit == 1);
+            
+            let required_bit = private.requiredSkillsBitset[i];
+            assert(required_bit == 0 || required_bit == 1);
+        }
+        
+        for i in 0..N_REGIONS {
+            let region_bit = private.allowedRegionsBitset[i];
+            assert(region_bit == 0 || region_bit == 1);
+        }
+    }
+}
+
+// Helper functions
+fn poseidon_hash(inputs: Vec<Field>) -> Field {
+    // Poseidon hash implementation
+    // This would use the built-in Poseidon hash function
+    builtin::poseidon(inputs)
+}
+
+fn assert_eq(a: Field, b: Field) {
+    assert(a == b);
+}
+
+fn assert_gte(a: Field, b: Field) {
+    // Assert a >= b
+    assert(a >= b);
+}
+
+fn assert_lte(a: Field, b: Field) {
+    // Assert a <= b
+    assert(a <= b);
+}
+
+fn assert_lt(a: Field, b: Field) {
+    // Assert a < b
+    assert(a < b);
+}

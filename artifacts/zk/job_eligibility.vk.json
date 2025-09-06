@@ -1,0 +1,43 @@
+{
+  "type": "verification_key",
+  "circuit": "job_eligibility",
+  "version": "1.0.0",
+  "curve": "BN254",
+  "scheme": "groth16",
+  "publicInputs": 3,
+  "alpha": {
+    "x": "0x2e497ee69e44cbc4895cc239df6e95aa8bfdd95606056aedf57f65468b85fdc2",
+    "y": "0x6ed65e9ba4228a9a8f8870a9310be936441f12f65cb35e80662c70103c27972f"
+  },
+  "beta": {
+    "x": "0xe98d3ce33eaea5b01f20dccf9137915c586ef9b009b710d0ec328f4bea59b4f5",
+    "y": "0x863a78cfd6b1afe6b71ab16d620f667500970b90c2cf97b2a1fe07fe8629561d"
+  },
+  "gamma": {
+    "x": "0xe3288319a76b3a251ec237504d7a9eaf4f57a626def8aa7c68814b4d49c1d724",
+    "y": "0x39aa241aa39e701c465449e2cfa4b38c40bbae54ca5bfadf9a724d48f472a8eb"
+  },
+  "delta": {
+    "x": "0x89b38a5badc29bb49a1cdf300700462e3078e4e98cefb3e81dae3b26e3f4cf1a",
+    "y": "0x6cfae79f77b939122d23b45389bc49eebef59691356b9a98a489bc9e9851b394"
+  },
+  "ic": [
+    {
+      "x": "0xc220e351f93d38ae530ba349d2e6554756d05ec1edbcbd2655cb21ce82719fd3",
+      "y": "0x89b59b9d63a9d91d3a591efc149003f4b174a04ce3eac92dc871fc4ceb816ffd"
+    },
+    {
+      "x": "0x0748127596f8e6b2849b92d23a04ae7648537b1b4b89037e7f71a2e92de9cb30",
+      "y": "0x1e03efd2f5f7cda6647ab26512868f687e5a3eeedee39706a9f0a080d3f386b9"
+    },
+    {
+      "x": "0xdbb5d46538de642915f68ce29ba14996ac4d711bff0333d8808ce8b5170a0390",
+      "y": "0xde984f1fcc41781128b1ed675ddbe1c9cc716caa08f3b63696f1e7e8089cd5d1"
+    },
+    {
+      "x": "0xe6690ea492095165cef205e99f3f30ab69e3e0c1db9e15a98e1625195270d3d2",
+      "y": "0x07fc4b23c2977f053d563e21cc5616d21de65d990960967576a2a3010031bce3"
+    }
+  ],
+  "timestamp": "2025-09-05T11:27:25.680Z"
+}

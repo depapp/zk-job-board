@@ -1,0 +1,41 @@
+{
+  "regions": [
+    {
+      "code": "NA",
+      "name": "North America",
+      "countries": ["United States", "Canada", "Mexico"],
+      "index": 0
+    },
+    {
+      "code": "EU",
+      "name": "Europe",
+      "countries": ["Germany", "France", "UK", "Spain", "Italy", "Netherlands", "Poland"],
+      "index": 1
+    },
+    {
+      "code": "APAC",
+      "name": "Asia-Pacific",
+      "countries": ["China", "Japan", "India", "Australia", "Singapore", "South Korea", "Indonesia"],
+      "index": 2
+    },
+    {
+      "code": "LATAM",
+      "name": "Latin America",
+      "countries": ["Brazil", "Argentina", "Chile", "Colombia", "Peru"],
+      "index": 3
+    },
+    {
+      "code": "AFRICA",
+      "name": "Africa",
+      "countries": ["South Africa", "Nigeria", "Kenya", "Egypt", "Morocco"],
+      "index": 4
+    },
+    {
+      "code": "MENA",
+      "name": "Middle East & North Africa",
+      "countries": ["UAE", "Saudi Arabia", "Israel", "Turkey", "Qatar"],
+      "index": 5
+    }
+  ],
+  "regionCodes": ["NA", "EU", "APAC", "LATAM", "AFRICA", "MENA"]
+}
